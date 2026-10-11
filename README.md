@@ -1,6 +1,6 @@
 # DataSentinel: Autonomous Enterprise Data Quality & Ingestion Engine
 
-**DataSentinel** is an enterprise-grade, autonomous Data Quality & Ingestion framework built with **PySpark, Delta Lake, and Databricks Unity Catalog**. It is designed to solve real-world data engineering nightmares: bridging the gap between messy raw landing data and clean, compliant, executive-ready analytical tables.
+**DataSentinel** is an enterprise-grade, autonomous Data Quality & Ingestion framework built with **PySpark, Delta Lake, and Databricks Unity Catalog**. It is designed to solve real-world data engineering challenges by bridging the gap between messy raw landing data and clean, compliant, executive-ready analytical tables.
 
 ---
 
@@ -9,8 +9,8 @@ DataSentinel follows a modern **Medallion Architecture** combined with automated
 
 1. **Bronze Layer (Ingestion):** Ingests raw CSV or Parquet files autonomously from Unity Catalog volumes.
 2. **Privacy & Cleansing Layer:** Applies GDPR/CCPA cryptographic PII masking and smart auto-remediation (string casing normalization and whitespace trimming).
-3. **Silver Layer (Validation & Quarantine):** Performs deep health profiling, isolates anomalies/duplicates into an immutable **Issue Ledger** audit trail, and persists valid records into clean Delta tables.
-4. **Gold Layer (Executive Analytics):** Aggregates clean data into curated business intelligence reports for leadership.
+3. **Silver Layer (Validation & Quarantine):** Performs deep health profiling, isolates anomalies and duplicate primary keys into an immutable **Issue Ledger** audit trail, and persists valid records into clean Delta tables.
+4. **Gold Layer (Executive Analytics):** Aggregates clean data into curated business intelligence reports for leadership dashboards.
 5. **SLA Circuit Breaker:** Acts as an automated quality gate that prevents corrupted data from poisoning downstream dashboards.
 
 ---
@@ -40,27 +40,3 @@ FILE_PATH = f"/Volumes/{CATALOG_NAME}/{SCHEMA_NAME}/raw_files/your_custom_file.c
 PRIMARY_KEY = "your_unique_id_column"
 REQUIRED_COLS = ["column_a", "column_b"]
 PII_COLS = ["email", "phone_number"]  # Columns requiring privacy masking
-
-## 📂 Repository Structure
-
-datasentinel-enterprise-engine/
-│
-├── notebooks/
-│   └── datasentinel_masterclass.py    # Complete 7-cell enterprise pipeline script
-│
-├── data/
-│   └── datasentinel_raw_customers.csv # Sample dataset for reproducible testing
-│
-└── README.md                          # Project documentation\
-
-## 💻 Tech Stack
-
-Platform: Databricks (Free Edition / Enterprise)
-
-Governance: Unity Catalog & Volumes
-
-Storage Format: Delta Lake (ACID Transactions, Schema Enforcement)
-
-Processing Engine: PySpark (DataFrame API, Window Functions)
-
-Language: Python
